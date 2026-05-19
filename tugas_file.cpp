@@ -4,7 +4,7 @@
 
 using namespace std;
 
-struct Film{
+struct Film{ //membuat data yang akan digunakan
 	char codeID[20];
 	string judul;
 	int harga;
@@ -78,7 +78,7 @@ int main(){
 }
 
 void olahData(){
-	FILE *file = fopen("netfilm.txt", "r");
+	FILE *file = fopen("netfilm.txt", "r"); //membaca data dari file netfilm
     if (!file) {
         cout << "ERROR! \n";
         return;
@@ -87,7 +87,7 @@ void olahData(){
     jumlahFilm = 0;
     char tempJudul[100];
 
-    while (fscanf(file, "%[^;];%[^;];%d;%d;%lf\n",
+    while (fscanf(file, "%[^;];%[^;];%d;%d;%lf\n", //membaca dari file (load) dengan format
 				  arr[jumlahFilm].codeID,
                   tempJudul,
                   &arr[jumlahFilm].harga,
@@ -100,7 +100,7 @@ void olahData(){
 }
 
 void inputData() {
-    FILE *file = fopen("netfilm.txt", "w");
+    FILE *file = fopen("netfilm.txt", "w"); //menulis/menginputkan data awal ke file
     if (!file) {
         cout << "ERROR! \n";
         return;
@@ -143,9 +143,9 @@ void tampilData() {
 
 void quickSort(Film arr[], int awal, int akhir) {
 	int low = awal, high = akhir;
-    double pivot = arr[(awal + akhir) / 2].rating;
+    double pivot = arr[(awal + akhir) / 2].rating; //mencari n tengah sebagai pivot
 
-    do {
+    do { //menyorting apakah awal atau akhir lebih besar atau kecil dari pivot
         while (arr[low].rating > pivot)
             low++;
         while (arr[high].rating < pivot)
@@ -224,7 +224,7 @@ void linearSearch(){
 	}
 }
 
-void binarySearch(){
+void binarySearch(){ //data harus urut sebelum pencarian
 	system("cls");
     cout << "===========================================================\n";
     cout << "\t\tBINARY SEARCH" << endl;
@@ -250,7 +250,7 @@ void binarySearch(){
 			bool found = false;
 	
 			while (left <= right) {
-				int mid = left + (right - left) / 2;
+				int mid = left + (right - left) / 2; //mencari n tengah untuk membandingkan
 	
 				if (arr[mid].judul == cari) {
 					cout << "Film ditemukan:\n";
@@ -301,7 +301,7 @@ void tambahData(){
     cin.ignore();
     
     for(int i = 0; i < jmlDataBaru; i++){
-		if (jumlahFilm < 100) {
+		if (jumlahFilm < 100) { //data baru yang masuk di simpan dulu ke arr
 			cout << "Masukkan kode ID film: ";
 			cin >> arr[jumlahFilm].codeID;
 
@@ -327,7 +327,7 @@ void tambahData(){
 				cout << "ERROR membuka file!\n";
 				return;
 			}
-			fprintf(file, "%s;%s;%d;%d;%.1f\n",
+			fprintf(file, "%s;%s;%d;%d;%.1f\n", //memasukkan data baru ke file dengan format
 					arr[jumlahFilm-1].codeID,
 					arr[jumlahFilm-1].judul.c_str(),
 					arr[jumlahFilm-1].harga,
