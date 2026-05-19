@@ -49,6 +49,7 @@ int main(){
 					break;
 				case 2:
 					quickSort(arr, 0, jumlahFilm - 1);
+					tampilData();
 					break;
 				case 3:
 					bubbleSort();
@@ -63,6 +64,7 @@ int main(){
 					tambahData();
 					break;
 				case 0:
+					cout << "Data berhasil tersimpan\n";
 					cout << "Program Keluar";
 					return 0;
 				default:
@@ -140,7 +142,7 @@ void tampilData() {
 }
 
 void quickSort(Film arr[], int awal, int akhir) {
-    int low = awal, high = akhir;
+	int low = awal, high = akhir;
     double pivot = arr[(awal + akhir) / 2].rating;
 
     do {
@@ -159,8 +161,6 @@ void quickSort(Film arr[], int awal, int akhir) {
         quickSort(arr, awal, high);
     if (low < akhir)
         quickSort(arr, low, akhir);
-        
-    tampilData();
 }
 
 
@@ -184,6 +184,7 @@ void linearSearch(){
 		string cariLagi;
 		do{
 			string cari;
+			cout << "Note: Pastikan penulisan judul film sama persis dengan data yang ada untuk hasil pencarian yang akurat.\n";
 			cout << "Masukkan judul film yang ingin dicari: ";
 			cin.ignore();
 			getline(cin, cari);
@@ -240,6 +241,7 @@ void binarySearch(){
 			}
 
 			string cari;
+			cout << "Note: Pastikan penulisan judul film sama persis dengan data yang ada untuk hasil pencarian yang akurat.\n";
 			cout << "Masukkan judul film yang ingin dicari: ";
 			cin.ignore();
 			getline(cin, cari);
@@ -257,7 +259,7 @@ void binarySearch(){
 					cout << "Tahun: " << arr[mid].tahun << endl;
 					cout << "Rating: " << arr[mid].rating << endl;
 					found = true;
-					cariLagi = "N";
+					cariLagi = "n";
 					break;
 				} else if (arr[mid].judul < cari) {
 					left = mid + 1;
